@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{{ message.title }}</title>
+    <style type="text/css" media="all">
+        h1 {
+            background: #0e69be;
+            padding: 15px;
+            width: 100%;
+            color: #FFFFFF;
+        }
+
+        .footer-wrap {
+            background: #0f0f0f;
+            color: #FFFFFF;
+            padding: 40px;
+        }
+
+        .footer-wrap p {
+            color: #FFFFFF;
+        }
+    </style>
+    <style type="text/css" media="screen">
+        /* Linked Styles */
+
+        /* Mobile styles */
+        @media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
+
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- body -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+        <td>
+            <!-- content -->
+            <div class="content">
+                <table>
+                    <tr>
+                        <td align="center">
+                            {% if message.title %}
+                                <h1>{{ message.title }}</h1>
+                            {% endif %}
+
+                            {% if message.username %}
+                                <p>Bonjour {{ message.username }},</p>
+                            {% else %}
+                                <p>Bonjour,</p>
+                            {% endif %}
+
+                            {% if message.body %}
+                                <p>{{ body }}</p>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /content -->
+        </td>
+    </tr>
+</table>
+<!-- /body -->
+
+{% if message.footer %}
+    <!-- footer -->
+    <table class="footer-wrap">
+        <tr>
+            <td class="container">
+                <!-- content -->
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <img src="http://atec.tn/public/images/atec.png" atl="{{ message.title }}" title="{{ message.title }}">
+                            </td>
+                        </tr>
+                        {% if message.footer %}
+                            <tr>
+                                <td align="center">
+                                    <p>{{ message.footer }}</p>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                </div>
+                <!-- /content -->
+            </td>
+        </tr>
+    </table>
+    <!-- /footer -->
+{% endif %}
+
+</body>
+</html>

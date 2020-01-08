@@ -1,0 +1,54 @@
+<?php
+
+
+
+/**
+ * Implements hook_theme().
+ */
+function subscribe_theme($existing, $type, $theme, $path)
+{
+    return [
+        'mail' => [
+            'variables' => [
+                'message' => array(),
+            ],
+
+        ],
+    ];
+
+
+}
+
+
+/**
+ * Implements hook_mail().
+ */
+function subscribe_mail($key, &$message, $params)
+{
+    //kint($params['message']);
+    switch ($key) {
+        case 'my_key':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+            $message['subject'] = $params['subject'];
+            $message['body'][] = isset($params['message'])?$params['message']:'';
+            $message['options'] = [];
+            if (isset($params['options']) && !empty($params['options'])) {
+                foreach ($params['options'] as $key => $value) {
+                    $message['options'][$key] = $value;
+                }
+            }
+            break;
+    }
+}
+
+
+function template_preprocess_mail(&$variables)
+{
+    if (isset($variables['message']['options']) && !empty($variables['message']['options'])) {
+        foreach ($variables['message']['options'] as $key => $value) {
+            $variables['message'][$key] = $value;
+        }
+    }
+}
+

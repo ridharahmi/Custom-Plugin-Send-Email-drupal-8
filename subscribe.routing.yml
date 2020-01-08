@@ -1,0 +1,7 @@
+subscribe.content:
+  path: '/subscribe-mail'
+  defaults:
+    _controller: '\Drupal\subscribe\Controller\MailController::content'
+    _title: 'Send Mail Drupal 8'
+  requirements:
+    _permission: 'access content'

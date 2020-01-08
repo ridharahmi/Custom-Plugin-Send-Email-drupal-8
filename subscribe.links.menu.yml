@@ -1,0 +1,5 @@
+subscribe.content:
+  title: 'Send Mail Subscribe'
+  description: 'This Is Send Mail With Drupal 8.'
+  parent: system.admin_config_ui
+  route_name: subscribe.content

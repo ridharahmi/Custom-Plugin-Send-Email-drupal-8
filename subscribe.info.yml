@@ -1,0 +1,7 @@
+name: 'Subscribe'
+description: 'Send Email Subscribe with drupal 8'
+type: module
+package: Custom
+core: 8.x
+version: 8.x
+
